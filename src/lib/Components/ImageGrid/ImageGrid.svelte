@@ -9,8 +9,7 @@
     let showIndicators = false;
     let defaultModal = false;
     const cursor = "cursor-pointer";
-    const imageStyle = "min-h-full min-w-full"
-
+    const imageStyle = "min-h-full min-w-full";
     const imgSm = images.map((item, index) => {
         const newId = {id:index}
         const newObj = Object.assign(item, newId)
@@ -34,6 +33,7 @@
                 <section class="grid grid-cols-4 grid-rows-2 w-full gap-2">
                     {#each images as item, index}
                         {#if index < 5}
+                        
                         <div  
                             on:click={handleClick} 
                             on:keydown={handleClick}
@@ -41,6 +41,7 @@
                             >
                             <img src={item.imgurl} alt={item.tags} class={imageStyle}/>
                         </div>
+
                         {/if}
                     {/each}
                 </section>
@@ -59,7 +60,9 @@
 <Modal title=" " bind:open={defaultModal} size="lg" backdropClasses="backdrop-blur-lg"  autoclose>
     <section class="grid grid-cols-2 grid-rows-2 w-full gap-2 ">
         {#each images as item, index} 
+        
             <img src={item.imgurl} alt={item.tags} class={ index % 3 === 0 ? `col-span-2 row-span-2 min-w-full ${imageStyle}` : imageStyle } />   
+
         {/each}
     </section>
 </Modal>
