@@ -8,9 +8,8 @@
     let showThumbs = false;
     let showIndicators = false;
     let defaultModal = false;
-
-    const generalItemStyle = "min-h-full min-w-full cursor-pointer";
-
+    const cursor = "cursor-pointer";
+    const imageStyle = "min-h-full min-w-full";
     const imgSm = images.map((item, index) => {
         const newId = {id:index}
         const newObj = Object.assign(item, newId)
@@ -38,9 +37,9 @@
                         <div  
                             on:click={handleClick} 
                             on:keydown={handleClick}
-                            class={ index === 0 ? `first:col-span-2 first:row-span-2 ${generalItemStyle}`  : generalItemStyle}
+                            class={ index === 0 ? `first:col-span-2 first:row-span-2 ${cursor}`  : cursor}
                             >
-                            <img src={item.imgurl} alt={item.tags} />
+                            <img src={item.imgurl} alt={item.tags} class={imageStyle}/>
                         </div>
 
                         {/if}
@@ -61,8 +60,8 @@
 <Modal title=" " bind:open={defaultModal} size="lg" backdropClasses="backdrop-blur-lg"  autoclose>
     <section class="grid grid-cols-2 grid-rows-2 w-full gap-2 ">
         {#each images as item, index} 
-
-            <img src={item.imgurl} alt={item.tags} class={ index % 3 === 0 ? `col-span-2 row-span-2 min-w-full ${generalItemStyle}` : generalItemStyle } />   
+        
+            <img src={item.imgurl} alt={item.tags} class={ index % 3 === 0 ? `col-span-2 row-span-2 min-w-full ${imageStyle}` : imageStyle } />   
 
         {/each}
     </section>
